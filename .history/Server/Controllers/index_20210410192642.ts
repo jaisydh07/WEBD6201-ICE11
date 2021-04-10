@@ -59,8 +59,7 @@ export function DisplayRegisterPage(req:Request, res:Response, next:NextFunction
             page: 'register', 
             messages: req.flash('registerMessage'),
             displayName: req.user ? req.user.displayName : '' 
-        });    
-    }
+        });    }
 
     return res.redirect('/contact-list');
 }

@@ -63,7 +63,6 @@ var core;
         });
     }
     function displayContactList() {
-        authGuard();
         $("a.delete").on("click", function (event) {
             if (!confirm("Are you sure?")) {
                 event.preventDefault();
@@ -75,39 +74,29 @@ var core;
         formValidation();
     }
     function displayLogin() {
-        function performLogout() {
-            sessionStorage.clear();
-            location.href = '/login';
-        }
-        function authGuard() {
-            if (!sessionStorage.getItem("user")) {
-                location.href = '/login';
-            }
-        }
-        function display404() {
-        }
-        function Start() {
-            let pageID = $("body")[0].getAttribute("id");
-            switch (pageID) {
-                case 'edit':
-                    displayEdit();
-                    break;
-                case 'contact':
-                    displayContact();
-                    break;
-                case 'login':
-                    displayLogin();
-                    break;
-                case 'logout':
-                    performLogout();
-                case 'register':
-                    break;
-                case 'contact-list':
-                    displayContactList();
-                    break;
-            }
-        }
-        window.addEventListener("load", Start);
     }
+    function displayRegister() {
+    }
+    function Start() {
+        let pageID = $("body")[0].getAttribute("id");
+        switch (pageID) {
+            case 'edit':
+                displayEdit();
+                break;
+            case 'contact':
+                displayContact();
+                break;
+            case 'login':
+                displayLogin();
+                break;
+            case 'register':
+                displayRegister();
+                break;
+            case 'contact-list':
+                displayContactList();
+                break;
+        }
+    }
+    window.addEventListener("load", Start);
 })(core || (core = {}));
 //# sourceMappingURL=app.js.map
